@@ -1,6 +1,12 @@
 {
   "name": "debut",
-  "version": "0.1.0",
+  "version": "0.0.1",
+  "description": "HTML Presentation Framework",
+  "main": "Gruntfile.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": { },
   "devDependencies": {
     "grunt": "~0.4.2",
     "grunt-contrib-jshint": "~0.6.3",
@@ -9,5 +15,18 @@
     "grunt-contrib-copy": "~0.5.0",
     "grunt-contrib-watch": "~0.5.3",
     "express": "~3.4.8"
-  }
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pinpickle/debut"
+  },
+  "author": "Christian Silver",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pinpickle/debut/issues"
+  },
+  "homepage": "https://github.com/pinpickle/debut"
 }
