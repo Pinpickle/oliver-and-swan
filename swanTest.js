@@ -9,5 +9,6 @@ app.use(function(err, req, res, next){
 
 
 app.use(express.static('test'));
+app.use('/build', express.static('build'));
 
 app.listen(3000, function() { console.log("Server is up and running");  });

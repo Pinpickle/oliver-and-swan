@@ -1,4 +1,4 @@
-/*! oliver-and-swan 2014-06-17 */
+/*! oliver-and-swan 2015-04-03 */
 !function(exports, global) {
     function Animation(fun, params) {
         this.params = $.extend(!0, {
@@ -55,7 +55,7 @@
         // Helper function to check if transform3D is supported.
         // Should return true for Webkits and Firefox 10+.
         function checkTransform3dSupport() {
-            return div.style[support.transform] = "", div.style[support.transform] = "rotateY(90deg)", 
+            return div.style[support.transform] = "", div.style[support.transform] = "rotateY(90deg)",
             "" !== div.style[support.transform];
         }
         // ## Transform class
@@ -94,7 +94,7 @@
             var re = [];
             return $.each(props, function(key) {
                 key = $.camelCase(key), // Convert "text-align" => "textAlign"
-                key = $.transit.propertyMap[key] || $.cssProps[key] || key, key = uncamel(key), 
+                key = $.transit.propertyMap[key] || $.cssProps[key] || key, key = uncamel(key),
                 // Convert back to dasherized
                 // Get vendor specify propertie
                 support[key] && (key = uncamel(support[key])), -1 === $.inArray(key, re) && re.push(key);
@@ -125,7 +125,7 @@
         }
         function registerCssHook(prop, isPixels) {
             // For certain properties, the 'px' should not be implied.
-            isPixels || ($.cssNumber[prop] = !0), $.transit.propertyMap[prop] = support.transform, 
+            isPixels || ($.cssNumber[prop] = !0), $.transit.propertyMap[prop] = support.transform,
             $.cssHooks[prop] = {
                 get: function(elem) {
                     var t = $(elem).css("transit:transform");
@@ -163,12 +163,12 @@
         // toMS('fast') => $.fx.speeds[i] => "200ms"
         // toMS('normal') //=> $.fx.speeds._default => "400ms"
         // toMS(10) //=> '10ms'
-        // toMS('100ms') //=> '100ms'  
+        // toMS('100ms') //=> '100ms'
         //
         function toMS(duration) {
             var i = duration;
             // Allow string durations like 'fast' and 'slow', without overriding numeric values.
-            return "string" != typeof i || i.match(/^[\-0-9\.]+/) || (i = $.fx.speeds[i] || $.fx.speeds._default), 
+            return "string" != typeof i || i.match(/^[\-0-9\.]+/) || (i = $.fx.speeds[i] || $.fx.speeds._default),
             unit(i, "ms");
         }
         $.transit = {
@@ -192,8 +192,8 @@
         };
         var div = document.createElement("div"), support = {}, isChrome = navigator.userAgent.toLowerCase().indexOf("chrome") > -1;
         // Check for the browser's transitions support.
-        support.transition = getVendorPropertyName("transition"), support.transitionDelay = getVendorPropertyName("transitionDelay"), 
-        support.transform = getVendorPropertyName("transform"), support.transformOrigin = getVendorPropertyName("transformOrigin"), 
+        support.transition = getVendorPropertyName("transition"), support.transitionDelay = getVendorPropertyName("transitionDelay"),
+        support.transform = getVendorPropertyName("transform"), support.transformOrigin = getVendorPropertyName("transformOrigin"),
         support.filter = getVendorPropertyName("Filter"), support.transform3d = checkTransform3dSupport();
         var eventNames = {
             transition: "transitionEnd",
@@ -260,7 +260,7 @@
                 // forcing Chrome to not use the 3d transforms as well.  Not sure if
                 // translate is affectede, but not risking it.  Detection code from
                 // http://davidwalsh.name/detecting-google-chrome-javascript
-                elem.style[support.transform] = "WebkitTransform" !== support.transform || isChrome ? value.toString() : value.toString(!0), 
+                elem.style[support.transform] = "WebkitTransform" !== support.transform || isChrome ? value.toString() : value.toString(!0),
                 $(elem).data("transform", value);
             }
         }, // Add a CSS hook for `.css({ transform: '...' })`.
@@ -309,9 +309,9 @@
             }
         }), // ## Other CSS hooks
         // Allows you to rotate, scale and translate.
-        registerCssHook("scale"), registerCssHook("translate"), registerCssHook("rotate"), 
-        registerCssHook("rotateX"), registerCssHook("rotateY"), registerCssHook("rotate3d"), 
-        registerCssHook("perspective"), registerCssHook("skewX"), registerCssHook("skewY"), 
+        registerCssHook("scale"), registerCssHook("translate"), registerCssHook("rotate"),
+        registerCssHook("rotateX"), registerCssHook("rotateY"), registerCssHook("rotate3d"),
+        registerCssHook("perspective"), registerCssHook("skewX"), registerCssHook("skewY"),
         registerCssHook("x", !0), registerCssHook("y", !0), Transform.prototype = {
             // ### setFromString()
             // Sets a property from a string.
@@ -389,8 +389,8 @@
                 //     .css({ translate: '2, 5' })    //=> "translate(2px, 5px)"
                 //
                 translate: function(x, y) {
-                    void 0 === this._translateX && (this._translateX = 0), void 0 === this._translateY && (this._translateY = 0), 
-                    null !== x && void 0 !== x && (this._translateX = unit(x, "px")), null !== y && void 0 !== y && (this._translateY = unit(y, "px")), 
+                    void 0 === this._translateX && (this._translateX = 0), void 0 === this._translateY && (this._translateY = 0),
+                    null !== x && void 0 !== x && (this._translateX = unit(x, "px")), null !== y && void 0 !== y && (this._translateY = unit(y, "px")),
                     this.translate = this._translateX + "," + this._translateY;
                 }
             },
@@ -462,17 +462,17 @@
             var self = this, delay = 0, queue = !0, theseProperties = jQuery.extend(!0, {}, properties);
             // Account for `.transition(properties, callback)`.
             "function" == typeof duration && (callback = duration, duration = void 0), // Account for `.transition(properties, options)`.
-            "object" == typeof duration && (easing = duration.easing, delay = duration.delay || 0, 
-            queue = duration.queue || !0, callback = duration.complete, duration = duration.duration), 
+            "object" == typeof duration && (easing = duration.easing, delay = duration.delay || 0,
+            queue = duration.queue || !0, callback = duration.complete, duration = duration.duration),
             // Account for `.transition(properties, duration, callback)`.
             "function" == typeof easing && (callback = easing, easing = void 0), // Alternate syntax.
-            "undefined" != typeof theseProperties.easing && (easing = theseProperties.easing, 
-            delete theseProperties.easing), "undefined" != typeof theseProperties.duration && (duration = theseProperties.duration, 
-            delete theseProperties.duration), "undefined" != typeof theseProperties.complete && (callback = theseProperties.complete, 
-            delete theseProperties.complete), "undefined" != typeof theseProperties.queue && (queue = theseProperties.queue, 
-            delete theseProperties.queue), "undefined" != typeof theseProperties.delay && (delay = theseProperties.delay, 
+            "undefined" != typeof theseProperties.easing && (easing = theseProperties.easing,
+            delete theseProperties.easing), "undefined" != typeof theseProperties.duration && (duration = theseProperties.duration,
+            delete theseProperties.duration), "undefined" != typeof theseProperties.complete && (callback = theseProperties.complete,
+            delete theseProperties.complete), "undefined" != typeof theseProperties.queue && (queue = theseProperties.queue,
+            delete theseProperties.queue), "undefined" != typeof theseProperties.delay && (delay = theseProperties.delay,
             delete theseProperties.delay), // Set defaults. (`400` duration, `ease` easing)
-            "undefined" == typeof duration && (duration = $.fx.speeds._default), "undefined" == typeof easing && (easing = $.cssEase._default), 
+            "undefined" == typeof duration && (duration = $.fx.speeds._default), "undefined" == typeof easing && (easing = $.cssEase._default),
             duration = toMS(duration);
             // Build the `transition` property.
             var transitionValue = getTransition(theseProperties, duration, easing, delay), work = $.transit.enabled && support.transition, i = work ? parseInt(duration, 10) + parseInt(delay, 10) : 0;
@@ -508,7 +508,7 @@
     }(jQuery);
     var $ = jQuery, animations = {
         appear: function(elem, context, params, callback) {
-            1 === params.direction ? $(elem).css("opacity", "") : -1 === params.direction && $(elem).css("opacity", 0), 
+            1 === params.direction ? $(elem).css("opacity", "") : -1 === params.direction && $(elem).css("opacity", 0),
             callback();
         },
         slide: function(elem, context, params, callback) {
@@ -524,7 +524,7 @@
             }), $(elem).css("opacity", 1);
             //The position given by $.fn.offset is scaled so we have to account for that
             var position = $(elem).offset();
-            switch (position.left = (position.left - context.containerLeft) / context.scale, 
+            switch (position.left = (position.left - context.containerLeft) / context.scale,
             position.top = (position.top - context.containerTop) / context.scale, params.side) {
               default:
               case "left":
@@ -567,7 +567,7 @@
             $(elem).animate(toGo, params.duration, params.easing, callback);
         },
         toggle: function(elem, context, params, callback) {
-            $(elem).attr(params.var, "undefined" == typeof params.toggleTo ? !$(elem).attr(params.var) : 1 === params.direction ? !!params.toggleTo : !params.toggleTo), 
+            $(elem).attr(params["var"], "undefined" == typeof params.toggleTo ? !$(elem).attr(params["var"]) : 1 === params.direction ? !!params.toggleTo : !params.toggleTo),
             callback();
         },
         fade: function(elem, context, params, callback) {
@@ -620,9 +620,9 @@
         "default": null
     }), validTransforms[i] = toCamelCase(validTransforms[i]);
     !function() {
-        for (var lastTime = 0, vendors = [ "ms", "moz", "webkit", "o" ], x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) window.requestAnimationFrame = window[vendors[x] + "RequestAnimationFrame"], 
+        for (var lastTime = 0, vendors = [ "ms", "moz", "webkit", "o" ], x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) window.requestAnimationFrame = window[vendors[x] + "RequestAnimationFrame"],
         window.cancelAnimationFrame = window[vendors[x] + "CancelAnimationFrame"] || window[vendors[x] + "CancelRequestAnimationFrame"];
-        window.requestAnimationFrame || (window.requestAnimationFrame = function(callback) {
+        window.requestAnimationFrame || (window.requestAnimationFrame = function(callback, element) {
             var currTime = new Date().getTime(), timeToCall = Math.max(0, 16 - (currTime - lastTime)), id = window.setTimeout(function() {
                 callback(currTime + timeToCall);
             }, timeToCall);
@@ -631,27 +631,27 @@
             clearTimeout(id);
         });
     }();
-    var OliverAndSwan = function(outerContainer, options) {
-        this.innerContainer = null, this.outerContainer = null, this.index = 0, this.milestones = [], 
+    var Debut = function(outerContainer, options) {
+        this.innerContainer = null, this.outerContainer = null, this.index = 0, this.milestones = [],
         this.events = {};
         var masterWidth, masterHeight, animationQueue = this.animationQueue = [], container = $('<div class="presentation-container"></div>'), slideMaster = outerContainer, domOptions = $(outerContainer).getDOMOptions(slideMasterOptions), $this = this;
-        $(outerContainer).addClass("presentation-master"), options = $.extend({}, domOptions, options), 
-        this.options = options, this.containerHeight = options.containerHeight, this.containerWidth = this.containerHeight * options.aspectRatio, 
-        this.scale = 1, container.height(this.containerHeight), container.width(this.containerWidth), 
-        container.css("transform-origin", "0 0"), this.containerLeft = 0, this.containerTop = 0, 
-        this.depth = container.parents().length, this.resize = function() {
+        $(outerContainer).addClass("presentation-master"), options = $.extend({}, domOptions, options),
+        this.options = options, this.containerHeight = options.containerHeight, this.containerWidth = this.containerHeight * options.aspectRatio,
+        this.scale = 1, container.height(this.containerHeight), container.width(this.containerWidth),
+        container.css("transform-origin", "0 0"), this.containerLeft = 0, this.containerTop = 0,
+        this.depth = container.parents().length, this.resize = function(e) {
             var ratio;
-            (slideMaster.width() != masterWidth || slideMaster.height() != masterHeight) && (masterWidth = slideMaster.width(), 
+            (slideMaster.width() != masterWidth || slideMaster.height() != masterHeight) && (masterWidth = slideMaster.width(),
             masterHeight = slideMaster.height(), ratio = masterWidth / masterHeight, //If the viewport is wider, scale according to height
-            ratio > options.aspectRatio ? ($this.scale = masterHeight / $this.containerHeight, 
-            $this.containerLeft = (masterWidth - $this.scale * $this.containerWidth) / 2, $this.containerTop = 0) : ($this.scale = masterWidth / $this.containerWidth, 
-            $this.containerLeft = 0, $this.containerTop = (masterHeight - $this.scale * $this.containerHeight) / 2), 
+            ratio > options.aspectRatio ? ($this.scale = masterHeight / $this.containerHeight,
+            $this.containerLeft = (masterWidth - $this.scale * $this.containerWidth) / 2, $this.containerTop = 0) : ($this.scale = masterWidth / $this.containerWidth,
+            $this.containerLeft = 0, $this.containerTop = (masterHeight - $this.scale * $this.containerHeight) / 2),
             container.css({
                 left: $this.containerLeft,
                 top: $this.containerTop
             }), container.css("scale", $this.scale));
-        }, $(window).resize(this.resize), this.resize(), $(outerContainer).children("*").appendTo(container), 
-        container.appendTo(outerContainer), this.outerContainer = $(outerContainer), this.innerContainer = container, 
+        }, $(window).resize(this.resize), this.resize(), $(outerContainer).children("*").appendTo(container),
+        container.appendTo(outerContainer), this.outerContainer = $(outerContainer), this.innerContainer = container,
         // Scale the canvases by the canvas scale factor
         // If it is not a floater, it will scale by the top left
         // If it is, it will scale by the centre
@@ -661,7 +661,7 @@
                 type: "number",
                 "default": $this.options.canvasUpscale
             } ]), width = $(this).width(), height = $(this).height();
-            $(this).attr("width", width * options.upscale), $(this).attr("height", height * options.upscale), 
+            $(this).attr("width", width * options.upscale), $(this).attr("height", height * options.upscale),
             $(this).css({
                 width: width,
                 height: height
@@ -686,8 +686,8 @@
                 direction: 1,
                 duration: 500,
                 easing: "in-out"
-            }, options.anim.params), options.anim.depth = elem.parents().length - $this.depth, 
-            elem.children(".notes").length && (options.anim.notes = elem.children(".notes"), 
+            }, options.anim.params), options.anim.depth = elem.parents().length - $this.depth,
+            elem.children(".notes").length && (options.anim.notes = elem.children(".notes"),
             elem.children(".notes").remove()), options.anim.params.milestone && $this.milestones.push({
                 ind: animationQueue.length,
                 name: options.anim.params.milestone
@@ -701,32 +701,32 @@
                 direction: -1,
                 duration: 500,
                 easing: "in-out"
-            }, options.endExit.params), options.endExit.depth = elem.parents().length - $this.depth, 
-            elem.children(".notes").length && !options.anim && (options.endExit.notes = elem.children(".notes"), 
+            }, options.endExit.params), options.endExit.depth = elem.parents().length - $this.depth,
+            elem.children(".notes").length && !options.anim && (options.endExit.notes = elem.children(".notes"),
             elem.children(".notes").remove()), options.endExit.params.milestone && $this.milestones.push({
                 ind: animationQueue.length,
                 name: options.endExit.params.milestone
             }), animationQueue.push(options.endExit));
-        }, childrenExit = function(elem) {
+        }, childrenExit = function(elem, top) {
             var options = $(elem).getDOMOptions(presentationObjectOptions);
-            elem = $(elem), options.anim && !options.exit && (options.exit = $.extend(!0, new Animation(), options.anim)), 
+            elem = $(elem), options.anim && !options.exit && (options.exit = $.extend(!0, new Animation(), options.anim)),
             options.exit && (options.exit.params = $.extend({}, {
                 direction: -1,
                 duration: 500,
                 easing: "in-out"
-            }, options.exit.params), options.exit._elem = elem, options.exit.start = 0 !== elem.index() ? "withprevious" : "onstep", 
+            }, options.exit.params), options.exit._elem = elem, options.exit.start = 0 !== elem.index() ? "withprevious" : "onstep",
             options.exit.depth = elem.parents().length - $this.depth, animationQueue.push(options.exit));
         };
         this.innerContainer.children().each(addChildren), $(window).keydown(function(e) {
             //39 is right, 37 is left
             (39 === e.which || 37 === e.which) && $this.proceed(37 === e.which);
-        }), $(this.outerContainer).click(function() {
+        }), $(this.outerContainer).click(function(e) {
             $this.proceed();
-        }), window.onbeforeunload = function() {
+        }), window.onbeforeunload = function(e) {
             $this.presenterView && $this.presenterView.close();
         }, this.presenterView = null, // Opens up a window in presenter view and fires a function at it when it's ready
         this.openPresenterView = function(url, callback) {
-            return $this.presenterView && $this.presenterView.close(), $this.presenterView = window.open(url, "Presenter"), 
+            return $this.presenterView && $this.presenterView.close(), $this.presenterView = window.open(url, "Presenter"),
             $($this.presenterView).load(function() {
                 $this.presenterView.ready($this), callback && callback($this.presenterView);
             }), $this.presenterView.onbeforeunload = function() {
@@ -774,14 +774,14 @@
             fun = animationQueue[$this.index], type = fun.constructor.name;
             var extender = {};
             quick && (extender.duration = 0), reverse || ($this.index += 1), //nextind = $this.index + reverse ? -1 : 0;
-            $this.trigger("animateStart", {}), $this.index in animationQueue && "withprevious" === animationQueue[$this.index].start ? (fun.run($this, reverse, extender), 
+            $this.trigger("animateStart", {}), $this.index in animationQueue && "withprevious" === animationQueue[$this.index].start ? (fun.run($this, reverse, extender),
             0 === fun.delay && reverse || 0 === animationQueue[$this.index].delay && !reverse || quick ? $this.proceed(reverse, quick, callback) : setTimeout(function() {
                 $this.proceed(reverse, quick, callback);
             }, reverse ? fun.delay : animationQueue[$this.index].delay)) : fun.run($this, reverse, extender, callback || void 0);
         };
         var lastTime = 0;
         this.animationFrame = function(time) {
-            0 === lastTime && (lastTime = time), $this.trigger("animationFrame", time - lastTime), 
+            0 === lastTime && (lastTime = time), $this.trigger("animationFrame", time - lastTime),
             lastTime = time, requestAnimationFrame($this.animationFrame);
         }, requestAnimationFrame(this.animationFrame);
     };
@@ -790,7 +790,7 @@
         //if ($(this).data("domOptions")) return $(this).data("domOptions");
         var i, attr, type, key, val, options = {};
         for (i in template) {
-            if (key = toCamelCase(template[i].key), attr = this.attr("data-" + template[i].key), 
+            if (key = toCamelCase(template[i].key), attr = this.attr("data-" + template[i].key),
             "undefined" != typeof attr) switch (type = template[i].type, typeof type) {
               //Is type a predefined value?
                 case "string":
@@ -820,8 +820,8 @@
                         options[key] = new Animation(fun, params);
                         break;
                     }
-                    options[key] = anim in animations ? new Animation(animations[anim], params) : new Animation(animations.appear, params), 
-                    options[key]._elem = $(this), params.start && (options[key].start = params.start), 
+                    options[key] = anim in animations ? new Animation(animations[anim], params) : new Animation(animations.appear, params),
+                    options[key]._elem = $(this), params.start && (options[key].start = params.start),
                     params.on && (options[key]._elem = $(params.on)), params.delay && (options[key].delay = params.delay);
                     break;
 
@@ -842,14 +842,14 @@
                 options[key] = attr;
             }
             //If the object still hasn't got a value, pull the default one
-            options.hasOwnProperty(key) || (options[key] = template[i].default);
+            options.hasOwnProperty(key) || (options[key] = template[i]["default"]);
         }
         return $(this).data("domOptions", options), options;
     }, //Where all the magic happpens
     $.fn.present = function(options) {
-        return new OliverAndSwan($(this), options);
-    }, //Make the OliverAndSwan object global
-    $.OliverAndSwan = OliverAndSwan, OliverAndSwan.animations = animations;
+        return new Debut($(this), options);
+    }, //Make the Debut object global
+    $.Debut = Debut, Debut.animations = animations;
 }({}, function() {
     return this;
 }());

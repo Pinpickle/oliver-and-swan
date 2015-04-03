@@ -89,7 +89,7 @@ for (var i in validTransforms) {
         };
 }());
 
-var OliverAndSwan = function(outerContainer, options) {
+var Debut = function(outerContainer, options) {
     this.innerContainer = null;
     this.outerContainer = null;
     this.index = 0;
@@ -524,10 +524,10 @@ $.fn.getDOMOptions = function (template) {
 
 //Where all the magic happpens
 $.fn.present = function (options) {
-    return new OliverAndSwan($(this), options);
+    return new Debut($(this), options);
 };
 
-//Make the OliverAndSwan object global
-$.OliverAndSwan = OliverAndSwan;
-OliverAndSwan.animations = animations;
+//Make the Debut object global
+$.Debut = Debut;
+Debut.animations = animations;
 
